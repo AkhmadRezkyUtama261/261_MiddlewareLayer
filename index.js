@@ -113,3 +113,17 @@ function validateParams(schema) {
         next()
     }
 }
+
+//endpoint buat get
+
+app.get('/', async (req, res) => {
+    const result =await pool.query(
+        'SELECTE * FROM biodata ORDER BY id'
+    )
+
+    return successResponse(
+        res,
+        'Data berhasil diinput bro',
+        result.rows
+    )
+})

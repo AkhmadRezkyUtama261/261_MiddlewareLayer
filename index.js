@@ -213,3 +213,22 @@ app,use((req, res) => {
         res, 'Endpoint tidak ditemukan', 404
     )
 })
+
+
+app.use((err, req, res, next) => {
+    console.error(err)
+
+    if (res.headersSent) {
+        return next(err)
+    }
+
+    return errorResponse(
+        res,
+        'Trejadi kesalahan pada server',
+        500
+    )
+})
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`)
+})

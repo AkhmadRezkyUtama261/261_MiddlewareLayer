@@ -31,4 +31,6 @@ app.use((req, res, next) => {
             duration: '${duration} ms',
         })
     })
+
+    next()
 })
